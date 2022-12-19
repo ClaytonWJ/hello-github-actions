@@ -5,6 +5,12 @@ jobs:
     name: Hello world action
     runs-on: ubuntu-latest
     steps:
+    # Make sure you put workflow kit action on top of all the steps 
+    - name: Collect Workflow Telemetry
+      uses: runforesight/foresight-workflow-kit-action@v1
+      if: ${{ always() }}
+      with:
+        api_key: 95e70d56-7198-4f06-824a-af963460a09b
       - uses: actions/checkout@v1
       - uses: ./action-a
         with:
